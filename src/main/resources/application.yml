@@ -1,0 +1,43 @@
+server:
+  port: 9090
+
+spring:
+  application:
+    name: demo
+  datasource:
+    url: jdbc:postgresql://172.70.5.202:5432/dvdrental
+    username: dev_user
+    password: 1234
+    driver-class-name: org.postgresql.Driver
+
+    # HikariCP 설정
+    hikari:
+      # 유지할 최소 유휴(idle) 연결 수 (성능 영향)
+      minimum-idle: 5
+      # 풀의 최대 연결 수
+      maximum-pool-size: 20
+      # 연결 유효성 검사 쿼리
+      connection-test-query: SELECT 1
+      # 연결이 풀에 남아있을 수 있는 최대 시간 (ms)
+      max-lifetime: 30000
+      # 풀에서 연결을 기다리는 최대 시간 (ms)
+      connection-timeout: 20000
+
+#  jpa:
+#    # DDL(Schema) 자동 생성/업데이트 설정
+#    # none: 자동 처리 안 함 (운영 환경 권장)
+#    # update: 변경된 부분만 업데이트
+#    # create-drop: 시작 시 생성, 종료 시 삭제
+#    # create: 시작 시 생성 (이전 데이터 모두 삭제)
+#    hibernate:
+#      ddl-auto: update
+#
+#    # 실행되는 SQL을 콘솔에 출력 (개발 시 유용)
+#    show-sql: true
+#
+#    properties:
+#      hibernate:
+#        # 사용 중인 데이터베이스 종류에 맞는 Dialect 지정
+#        dialect: org.hibernate.dialect.PostgreSQLDialect
+#        # SQL 출력 포맷 설정 (가독성 향상)
+#        format_sql: true
